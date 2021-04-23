@@ -1,0 +1,9 @@
+.contenedorCardTest {
+   box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px 0px;
+   background: rgb(250, 249, 249);
+   border-radius: 30px;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   padding: 2.5rem;
+}
