@@ -1,3 +1,30 @@
+/** 
+  * ? ESTILOS PARA LOS MENUS DE NAVEGACION MOVIL Y DESKTOP
+  * ! DESKTOP
+*/
+.menu {
+   height: 2.5rem;
+   padding: 0.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.menu a {
+   color: #faf9f9;
+   padding: 0 0.4rem;
+   font-weight: 300;
+   letter-spacing: 1px;
+}
+
+.menu a:hover {
+   border-bottom: 1px solid;
+}
+
+/** 
+ * !MOBILE
+*/
+
 .menuMobil {
    width: 3rem;
    height: 3rem;
@@ -43,7 +70,7 @@
    height: 100vh;
    width: 0;
    background-color: rgb(85 91 110);
-   position: absolute;
+   position: fixed;
    top: 0rem;
    left: 0;
    z-index: 9998;
@@ -67,14 +94,37 @@
    color: #fdfdfd;
 }
 
-@media screen and (min-width: 1024px) {
-   .menuMobil {
-      display: none;
-   }
+/**
+ * *estilos de botones */
 
-   .menu {
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-   }
+.btn-principal {
+   margin: 1rem;
+   font-weight: normal;
+   width: 7.3rem;
+   height: 40px;
+   background-color: rgba(190, 227, 219, 1);
+   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%);
+   border-radius: 25px;
+}
+
+.btn-principal:hover {
+   transition: 0.2s ease;
+   background-color: rgb(167 201 193);
+   color: #faf9f9;
+}
+
+.seconbtn {
+   background: rgba(85, 91, 110, 1);
+   color: rgba(190, 227, 219, 1);
+}
+
+/**
+ * ?estilos paara los encabezados
+ */
+
+.titulo {
+   font-size: 1.5rem;
+   font-weight: normal;
+   color: rgb(85, 91, 110);
+   margin: 2rem 0;
 }

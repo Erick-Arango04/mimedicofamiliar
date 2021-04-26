@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import "../../Componentes/Styles/Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ clas = "menu" }) => {
    return (
-      <nav className="menu">
+      <nav className={clas}>
          <Link exact to="/">
             Registrarse
          </Link>

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, use, useRef } from "react";
-import { Link } from "react-router-dom";
-import "../Styles/NavbarMobil.css";
+import React, { useEffect, useState, useRef } from "react";
+import Navbar from "../../Routers/NavbarRoute/Navbar";
 
 const NavbarMovil = () => {
    const [touch, setTouch] = useState(false);
@@ -29,26 +28,7 @@ const NavbarMovil = () => {
          </div>
 
          <section ref={refContent} className="contentMenu">
-            <nav className="menuMostrarMovil">
-               <Link exact to="/">
-                  Registrarse
-               </Link>
-               <Link exact to="/">
-                  Acceder
-               </Link>
-               <Link exact to="/">
-                  Inicio
-               </Link>
-               <Link exact to="/">
-                  Mi perfil
-               </Link>
-               <Link exact to="/">
-                  Favoritos
-               </Link>
-               <Link exact to="/">
-                  Agenda
-               </Link>
-            </nav>
+            <Navbar clas="menuMostrarMovil" />
          </section>
       </>
    );
