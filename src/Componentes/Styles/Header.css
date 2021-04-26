@@ -1,7 +1,7 @@
 .head {
    height: 70vh;
-   background-image: url(../../Img/header.jpg);
-   filter: brightness(0.8);
+   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url(../../Img/header.jpg);
    background-position: bottom center;
    background-size: cover;
    padding: 0.3rem;
@@ -12,8 +12,4 @@
    color: #faf9f9;
    padding-top: 0.5rem;
    margin: 1rem 0;
-}
-
-.head form {
-   margin-top: 10%;
 }

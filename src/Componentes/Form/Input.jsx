@@ -1,5 +1,5 @@
 import React from "react";
-import "./../Styles/Input.css";
+import "../Styles/Input.css";
 
 const Input = ({ valor, icono }) => {
    return (

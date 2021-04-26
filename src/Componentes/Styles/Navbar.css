@@ -1,0 +1,16 @@
+.menu {
+   height: 2.5rem;
+   padding: 0.5rem;
+   display: none;
+}
+
+.menu a {
+   color: #faf9f9;
+   padding: 0 0.4rem;
+   font-weight: 300;
+   letter-spacing: 1px;
+}
+
+.menu a:hover {
+   border-bottom: 1px solid;
+}
