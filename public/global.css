@@ -10,14 +10,20 @@
    justify-content: space-evenly;
 }
 
-.menu a {
+.menu a,
+span {
    color: #faf9f9;
    padding: 0 0.4rem;
    font-weight: 300;
    letter-spacing: 1px;
+   cursor: pointer;
 }
 
 .menu a:hover {
+   border-bottom: 1px solid;
+}
+
+.menu span:hover {
    border-bottom: 1px solid;
 }
 
@@ -26,8 +32,10 @@
 */
 
 .menuMobil {
-   width: 3rem;
-   height: 3rem;
+   width: 3.5rem;
+   height: 3.5rem;
+   color: #faf9f9;
+   font-size: 2.3rem;
    background-color: rgb(46 47 50 / 91%);
    border-radius: 50%;
    display: flex;
@@ -37,33 +45,7 @@
    position: fixed;
    bottom: 4vh;
    right: 5vw;
-   z-index: 10000;
-}
-
-.menuMobil span {
-   display: block;
-   width: 33px;
-   height: 4px;
-   margin-bottom: 5px;
-   background: #faf9f9;
-   border-radius: 3px;
-   z-index: 1;
-   transition: 0.2s ease-in-out;
-}
-
-.touch span:nth-child(1) {
-   transition: 0.2s ease-in-out;
-   transform: rotate(-50deg) translate(-8px, 6px);
-}
-
-.touch span:nth-child(2) {
-   transition: 0.2s ease-in-out;
-   opacity: 0;
-}
-
-.touch span:nth-child(3) {
-   transition: 0.2s ease-in-out;
-   transform: rotate(44deg) translate(-6px, -5px);
+   z-index: 2;
 }
 
 .contentMenu {
@@ -73,11 +55,11 @@
    position: fixed;
    top: 0rem;
    left: 0;
-   z-index: 9998;
+   z-index: 3;
    display: flex;
    justify-content: center;
    align-items: center;
-   transition: 0.5s;
+   transition: 0.3s;
    overflow-x: hidden;
 }
 
@@ -89,9 +71,29 @@
    justify-content: space-evenly;
 }
 
+.menuMostrarMovil span {
+   font-size: 1.5rem;
+}
+
 .menuMostrarMovil a {
    font-size: 1.7rem;
    color: #fdfdfd;
+}
+
+.btnMovilClose {
+   color: aliceblue;
+   border: 1px solid currentColor;
+   border-radius: 47%;
+   font-size: 2.3rem;
+   padding: 0 6px;
+   padding-top: 8px;
+   position: absolute;
+   bottom: 8vh;
+}
+
+.red {
+   color: #f44336;
+   position: inherit;
 }
 
 /**
@@ -127,4 +129,95 @@
    font-weight: normal;
    color: rgb(85, 91, 110);
    margin: 2rem 0;
+}
+
+/**
+
+* *Estilos para el modal 
+
+*/
+.modal {
+   position: fixed;
+   z-index: 2;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background: rgb(190 227 219 / 60%);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   transition: transform 0.4s ease-out;
+   transform: translateY(-200%);
+}
+
+.modal article:first-child {
+   background: rgba(255, 255, 255, 1);
+   padding: 1rem 0;
+   width: 20rem;
+   border-radius: 20px;
+   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%);
+}
+
+.tituloMenu {
+   font-size: 2rem;
+   color: rgb(85, 91, 110);
+   margin: 0;
+   margin-bottom: 1rem;
+}
+.modal article h2 {
+   font-size: 1.3rem;
+   color: rgb(85, 91, 110);
+   font-weight: 100;
+   letter-spacing: 1px;
+   padding: 0 2rem;
+}
+
+.paswordReset {
+   margin: 1rem;
+   color: rgb(85, 91, 110);
+   padding: -2px;
+   text-decoration: underline;
+}
+
+.paswordReset:hover {
+   transition: 0.2s ease;
+   font-weight: bold;
+   color: #020202;
+   cursor: pointer;
+}
+
+.singIng {
+   font-size: 1.5rem;
+   font-weight: 600;
+   color: rgb(85, 91, 110);
+}
+
+.contentLogBtn {
+   width: 20rem;
+   margin: 1.5rem auto;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.btnLog {
+   width: 9rem;
+   padding: 0.5rem 0.8rem;
+   font-size: 1.1rem;
+   color: rgba(137, 176, 174, 1);
+   background: rgba(255, 214, 186, 1);
+   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%);
+   border-radius: 27px;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   cursor: pointer;
+}
+.btnLog img {
+   width: 2.3rem;
+}
+
+.mostrar {
+   transform: translateY(0);
 }

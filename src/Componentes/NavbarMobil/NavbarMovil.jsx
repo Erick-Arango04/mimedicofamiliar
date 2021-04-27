@@ -6,7 +6,7 @@ const NavbarMovil = () => {
    const refContent = useRef();
 
    const isTouch = ({ target }) => {
-      if (target.localName === "div" || target.localName === "span") {
+      if (target.localName === "div" || target.localName === "i") {
          setTouch(!touch);
       }
    };
@@ -22,13 +22,14 @@ const NavbarMovil = () => {
    return (
       <>
          <div className={`menuMobil  ${touch && "touch"}`} onClick={isTouch}>
-            <span></span>
-            <span></span>
-            <span></span>
+            <i class="ri-menu-line"></i>
          </div>
 
          <section ref={refContent} className="contentMenu">
-            <Navbar clas="menuMostrarMovil" />
+            <Navbar clas="menuMostrarMovil" setTouch={setTouch} />
+            <button className="btnMovilClose" onClick={isTouch}>
+               <i class="ri-close-line"></i>
+            </button>
          </section>
       </>
    );

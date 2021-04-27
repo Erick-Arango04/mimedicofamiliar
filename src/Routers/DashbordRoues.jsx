@@ -6,7 +6,6 @@ import {
    Redirect,
 } from "react-router-dom";
 import PagePrincipal from "../Componentes/PagePrincipal/PagePrincipal";
-import Navbar from "./NavbarRoute/Navbar";
 
 const DashbordRoues = () => {
    return (
