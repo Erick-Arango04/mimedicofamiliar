@@ -1,8 +1,6 @@
 import React from "react";
 import CardTestimonial from "./CardTestimonial";
 
-import "../Styles/ContenedorTestimonial.css";
-
 const ContenedorTestimonial = () => {
    return (
       <section className="contenedor">

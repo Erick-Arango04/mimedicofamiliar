@@ -4,7 +4,7 @@ import "../Styles/Input.css";
 const Input = ({ valor, icono }) => {
    return (
       <section className="contenedorInput">
-         <input className="inputFotm" type="text" defaultValue={valor} />
+         <input className="inputFotm" type="text" placeholder={valor} />
          {icono}
       </section>
    );

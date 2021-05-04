@@ -1,11 +1,10 @@
 import React from "react";
-import "../Styles/Footer.css";
 
 const img = require.context("../../Img", true);
 
 const Footer = () => {
    return (
-      <footer className="footer contenedor">
+      <footer className="footer contenedor contentBlanco">
          <section>
             <ul>
                <li className="li">

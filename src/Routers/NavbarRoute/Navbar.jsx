@@ -30,14 +30,28 @@ const Navbar = ({ clas = "menu", setTouch = null }) => {
    return (
       <>
          <nav className={clas}>
-            <span onClick={() => handleViewModal(openModalRegister)}>
+            <span
+               className="no"
+               onClick={() => handleViewModal(openModalRegister)}
+            >
                Registrarse
             </span>
-            <span onClick={() => handleViewModal(openModalAcces)}>Acceder</span>
-            <Link to="/">Inicio</Link>
-            <Link to="/">Mi perfil</Link>
+            <span
+               className="no"
+               onClick={() => handleViewModal(openModalAcces)}
+            >
+               Acceder
+            </span>
+            <Link exact="true" to="/">
+               Inicio
+            </Link>
+            <Link exact="true" to="/paciente">
+               Mi perfil
+            </Link>
             <Link to="/">Favoritos</Link>
-            <Link to="/">Agenda</Link>
+            <Link exact="true" to="/agenda">
+               Agenda
+            </Link>
          </nav>
          <ModalFormRegistrer
             isOpen={isOpenModalRegister}

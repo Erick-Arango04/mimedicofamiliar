@@ -1,8 +1,6 @@
 import React from "react";
 import CardIu from "./CardIu";
-
-const img = require.context("../../Img", true);
-
+const img = require.context("../../../Img", true);
 const ContenedorCard = () => {
    return (
       <main className="contenedor">

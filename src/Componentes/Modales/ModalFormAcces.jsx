@@ -44,7 +44,7 @@ const ModalFormAcces = ({ isOpen, closeModal }) => {
             </button>
             <br />
             <button className="btnMovilClose red" onClick={closeModal}>
-               <i class="ri-close-line"></i>
+               <i className="ri-close-line"></i>
             </button>
          </article>
       </section>

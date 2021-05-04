@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../Styles/CardTestimonial.css";
-
 const CardTestimonial = () => {
    return (
       <article className="contentTest">

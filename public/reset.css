@@ -44,6 +44,7 @@ h2,
 h3,
 li {
    user-select: none;
+   list-style: none;
 }
 
 hr {

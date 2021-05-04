@@ -22,13 +22,13 @@ const NavbarMovil = () => {
    return (
       <>
          <div className={`menuMobil  ${touch && "touch"}`} onClick={isTouch}>
-            <i class="ri-menu-line"></i>
+            <i className="ri-menu-line"></i>
          </div>
 
          <section ref={refContent} className="contentMenu">
             <Navbar clas="menuMostrarMovil" setTouch={setTouch} />
             <button className="btnMovilClose" onClick={isTouch}>
-               <i class="ri-close-line"></i>
+               <i className="ri-close-line"></i>
             </button>
          </section>
       </>

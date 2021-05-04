@@ -1,6 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
-import "../Styles/CardPrincipal.css";
 
 const CardIu = ({ imagen, titulo, descripcion }) => {
    return (
