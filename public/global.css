@@ -33,7 +33,6 @@
    align-items: center;
    justify-content: space-evenly;
    background: #fbfffe80;
-   margin-bottom: 2rem;
 }
 
 .menu a,
@@ -51,6 +50,28 @@
 
 .menu span:hover {
    border-bottom: 1px solid;
+}
+
+.tipoUser {
+   position: absolute;
+   background: #fbfffe80;
+   top: 2.5rem;
+   width: 8rem;
+   height: 4.5rem;
+   padding: 0.3rem 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+
+.tipoUserMobile {
+   position: relative;
+   top: 0.8rem;
+   height: 5rem;
+   padding: 0.1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 }
 
 /** 
@@ -91,7 +112,7 @@
 
 .menuMostrarMovil {
    width: 70vw;
-   height: 70%;
+   height: 90%;
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
@@ -113,11 +134,11 @@
    color: aliceblue;
    border: 1px solid currentColor;
    border-radius: 47%;
-   font-size: 2.3rem;
+   font-size: 2rem;
    padding: 0 6px;
    padding-top: 8px;
    position: absolute;
-   bottom: 8vh;
+   bottom: 1vh;
 }
 
 .red {
@@ -127,6 +148,13 @@
    position: inherit;
 }
 
+.tipoUserMobile > span {
+   font-size: 1.2rem;
+   padding: 4px;
+   border-bottom: 1px solid;
+   width: 6rem;
+   margin: 0 auto;
+}
 /**
  * *ESTILOS PARA LOS BOTONES */
 
@@ -179,7 +207,7 @@
    align-items: center;
    justify-content: center;
    flex-direction: column;
-   transition: transform 0.4s ease-out;
+   transition: transform 0.3s ease-out;
    transform: translateY(-300%);
 }
 
@@ -259,7 +287,6 @@
    width: 13rem;
    border-radius: 20px;
    border: 1px solid rgba(250, 249, 249, 1);
-   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 80%);
    background: #89b0ae;
 }
 

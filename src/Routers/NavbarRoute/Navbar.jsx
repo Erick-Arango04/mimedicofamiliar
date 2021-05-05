@@ -1,47 +1,42 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import ModalFormAcces from "../../Componentes/Modales/ModalFormAcces";
 import ModalFormRegistrer from "../../Componentes/Modales/ModalFormRegistrer";
 import { useModal } from "../../Hooks/useModal";
+import TipoUser from "./TipoUser";
 
-const Navbar = ({ clas = "menu", setTouch = null }) => {
-   // Hook modal
+const Navbar = ({
+   clas = "menu",
+   settouchMenuMovil = null,
+   clastipoUserMobile = "tipoUser",
+}) => {
+   const [tipoUser, setTipoUser] = useState(false);
+
+   const [isOpenModalAcces, openModalAcces, closeModalAcces] = useModal(false);
+
    const [
       isOpenModalRegister,
       openModalRegister,
       closeModalRegister,
    ] = useModal(false);
 
-   const [isOpenModalAcces, openModalAcces, closeModalAcces] = useModal(false);
-
-   /**
-    * *Mostrar los formularios de registro
-    */
-
-   const handleViewModal = (setValue) => {
-      // Recibimos un callback que actualizara el valor para saber si se muestra el modal
-      if (setTouch === null) {
-         setValue();
-      } else {
-         setTouch((e) => !e);
-         setValue();
-      }
+   const datostipoUser = {
+      clastipoUserMobile,
+      openModalRegister,
+      settouchMenuMovil,
+      setTipoUser,
    };
 
    return (
       <>
          <nav className={clas}>
-            <span
-               className="no"
-               onClick={() => handleViewModal(openModalRegister)}
-            >
-               Registrarse
-            </span>
-            <span
-               className="no"
-               onClick={() => handleViewModal(openModalAcces)}
-            >
-               Acceder
-            </span>
+            <section>
+               <span onClick={() => setTipoUser(!tipoUser)}>Registrarse</span>
+               {tipoUser && <TipoUser {...datostipoUser} />}
+            </section>
+
+            <span onClick={() => openModalAcces()}>Acceder</span>
+
             <Link exact="true" to="/">
                Inicio
             </Link>
@@ -53,6 +48,7 @@ const Navbar = ({ clas = "menu", setTouch = null }) => {
                Agenda
             </Link>
          </nav>
+
          <ModalFormRegistrer
             isOpen={isOpenModalRegister}
             closeModal={closeModalRegister}
