@@ -1,7 +1,27 @@
+import {
+   login,
+   recuperarContraseña,
+} from "../../config-firebase/funciones_firebase";
+import { useForm } from "../../Hooks/useForm";
 import Input from "../Form/Input";
 const img = require.context("../../Img", true);
 
+const valuesForm = {
+   email: "",
+   password: "",
+   validate_email: false,
+   validate_password: false,
+};
+
 const ModalFormAcces = ({ isOpen, closeModal }) => {
+   const [values, manejadorInput, reset] = useForm(valuesForm);
+   const { email, password, validate_email } = values;
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      login(email, password);
+   };
+
    return (
       <section
          className={`modal ${isOpen && "mostrar"}`}
@@ -25,21 +45,30 @@ const ModalFormAcces = ({ isOpen, closeModal }) => {
                </div>
             </section>
             <Input
-               valor="Email"
+               value={values}
+               name="email"
+               placeholder="Email"
+               manejadorInput={manejadorInput}
                icono={<i className="ri-user-fill"></i>}
-            />{" "}
+            />
             <br />
+
             <Input
-               valor="Password"
+               value={values}
+               name="password"
+               placeholder="Password"
+               manejadorInput={manejadorInput}
                icono={<i className="ri-lock-password-fill"></i>}
             />
             <br />
-            <h4 className="paswordReset">¿Olvidaste tu contraseña?</h4>
-            <p className="singIng">Sing in</p>
-            <button
-               className="btn-principal seconbtn"
-               onClick={() => closeModal()}
+            <h4
+               className="paswordReset"
+               onClick={() => validate_email && recuperarContraseña(email)}
             >
+               ¿Olvidaste tu contraseña?
+            </h4>
+            <p className="singIng">Sing in</p>
+            <button className="btn-principal seconbtn" onClick={handleSubmit}>
                Go <i className="ri-arrow-right-line"></i>
             </button>
             <br />

@@ -1,12 +1,45 @@
 import React from "react";
-import "../Styles/Input.css";
 
-const Input = ({ valor, icono }) => {
+const Input = ({
+   placeholder,
+   name,
+   value,
+   tipo = "text",
+   icono,
+   manejadorInput,
+}) => {
+   let claseMensaje = "mensaje";
+
+   if (value[`validate_${name}`]) {
+      claseMensaje += " correcto";
+   } else {
+      if (value[name].length > 2) {
+         claseMensaje += " falso";
+      }
+   }
+
    return (
-      <section className="contenedorInput">
-         <input className="inputFotm" type="text" placeholder={valor} />
-         {icono}
-      </section>
+      <>
+         <div className={claseMensaje}>
+            {value[`validate_${name}`] ? (
+               <h6> formato correcto</h6>
+            ) : (
+               <h6>formato no valido</h6>
+            )}
+         </div>
+         <section className="contenedorInput">
+            <input
+               value={value.name}
+               className="inputFotm"
+               type={tipo}
+               autoComplete="off"
+               name={name}
+               onChange={manejadorInput}
+               placeholder={placeholder}
+            />
+            {icono}
+         </section>
+      </>
    );
 };
 

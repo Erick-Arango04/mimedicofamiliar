@@ -1,21 +1,43 @@
 import React from "react";
+import { useForm } from "../../Hooks/useForm";
 import Input from "./Input";
-// import "./../Styles/Form.css";
 
+const valuesForm = { especialidad: "", estado: "", tipoDeConsulta: "" };
 const Formulario = () => {
+   const [values, manejadorInput, reset] = useForm(valuesForm);
    return (
       <form className="contenedor">
-         <Input valor="Especialidad" icono={<i className="ri-user-fill"></i>} />
+         {/*  <Input
+            value={values.especialidad}
+            placeholder="Especialidad"
+            name="especialidad"
+            manejadorInput={manejadorInput}
+            icono={<i className="ri-user-fill"></i>}
+         />
          <Input
-            valor="Estado"
+            value={values.estado}
+            placeholder="Estado"
+            name="especialidad"
+            manejadorInput={manejadorInput}
             icono={<i className="ri-user-location-fill"></i>}
          />
          <Input
-            valor="Tipo de Consulta"
+            value={values.tipoDeConsulta}
+            placeholder="Tipo de Consulta"
+            name="tipoDeConsulta"
+            manejadorInput={manejadorInput}
             icono={<i className="ri-contacts-book-fill"></i>}
          />
-         <br />
-         <button className="btn-principal">Comenzar</button>
+         <br /> */}
+         <button
+            className="btn-principal"
+            onClick={(e) => {
+               e.preventDefault();
+               console.log(values);
+            }}
+         >
+            Comenzar
+         </button>
       </form>
    );
 };

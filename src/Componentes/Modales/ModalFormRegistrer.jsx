@@ -1,7 +1,36 @@
+import { useState } from "react";
+import { registrar } from "../../config-firebase/funciones_firebase";
+import { useForm } from "../../Hooks/useForm";
 import Input from "../Form/Input";
+import InputConfirmPasswoedput from "../Form/InputConfirmPasswoed";
 const img = require.context("../../Img", true);
 
+const initialValueForm = {
+   email: "",
+   password: "",
+   validate_email: false,
+   validate_password: false,
+};
+
 const ModalFormRegistrer = ({ isOpen, closeModal }) => {
+   const [confirmPassword, setconfirmPassword] = useState("");
+   const [values, manejadorInput, reset] = useForm(initialValueForm);
+   const { email, password, validate_email, validate_password } = values;
+
+   const registrarUsuario = (e) => {
+      e.preventDefault();
+
+      if (
+         validate_email &&
+         validate_password &&
+         values.password === confirmPassword
+      ) {
+         registrar(email, password);
+         reset();
+         closeModal();
+      }
+   };
+
    return (
       <section
          className={`modal ${isOpen && "mostrar"}`}
@@ -25,25 +54,37 @@ const ModalFormRegistrer = ({ isOpen, closeModal }) => {
                </div>
             </section>
             <Input
-               valor="Email"
+               value={values}
+               placeholder="Email"
+               name="email"
+               manejadorInput={manejadorInput}
                icono={<i className="ri-user-fill"></i>}
-            />{" "}
-            <br />
-            <Input
-               valor="Password"
-               icono={<i className="ri-lock-password-fill"></i>}
             />
             <br />
             <Input
-               valor="Confirm Pasword"
+               value={values}
+               placeholder="Password"
+               name="password"
+               // tipo="password"
+               manejadorInput={manejadorInput}
                icono={<i className="ri-lock-password-fill"></i>}
             />
+            <br />
+            <InputConfirmPasswoedput
+               confirmPassword={confirmPassword}
+               setconfirmPassword={setconfirmPassword}
+               placeholder="Confirm Pasword"
+               contraseña={values.password}
+               name="confirmPasword"
+               icono={<i className="ri-lock-password-fill"></i>}
+            />
+
             <br />
             <br />
             <p className="singIng">Sing in</p>
             <button
                className="btn-principal seconbtn"
-               onClick={() => closeModal()}
+               onClick={(e) => registrarUsuario(e)}
             >
                Go <i className="ri-arrow-right-line"></i>
             </button>

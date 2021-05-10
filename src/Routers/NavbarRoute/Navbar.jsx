@@ -27,6 +27,14 @@ const Navbar = ({
       setTipoUser,
    };
 
+   const handleSubmit = () => {
+      setTipoUser(false);
+      openModalAcces();
+      if (settouchMenuMovil !== null) {
+         settouchMenuMovil((e) => !e);
+      }
+   };
+
    return (
       <>
          <nav className={clas}>
@@ -35,7 +43,7 @@ const Navbar = ({
                {tipoUser && <TipoUser {...datostipoUser} />}
             </section>
 
-            <span onClick={() => openModalAcces()}>Acceder</span>
+            <span onClick={() => handleSubmit()}>Acceder</span>
 
             <Link exact="true" to="/">
                Inicio
