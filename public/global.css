@@ -3,6 +3,16 @@
    --apricot: rgba(255, 214, 186, 1);
 }
 
+/* barras de scrool */
+body::-webkit-scrollbar {
+   width: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+   background: var(--colormorado);
+   border-radius: 20px;
+}
+
 /** Globales */
 .contentBlanco {
    padding: 1rem;
@@ -141,13 +151,6 @@
    bottom: 1vh;
 }
 
-.red {
-   margin-top: 1rem;
-   color: #f44336;
-   font-size: 1.6rem;
-   position: inherit;
-}
-
 .tipoUserMobile > span {
    font-size: 1.2rem;
    padding: 4px;
@@ -195,6 +198,11 @@
 * *Estilos para el modal 
 
 */
+.imgModal {
+   margin: 0 auto;
+   width: 4rem;
+}
+
 .modal {
    position: fixed;
    z-index: 2;
@@ -204,20 +212,32 @@
    height: 100vh;
    background: rgb(190 227 219 / 60%);
    display: flex;
+   padding-top: 1rem;
    align-items: center;
-   justify-content: center;
    flex-direction: column;
    transition: transform 0.3s ease-out;
    transform: translateY(-300%);
 }
 
 .modal article:first-child {
+   overflow: hidden;
+   overflow-y: scroll;
    position: relative;
    background: rgba(255, 255, 255, 1);
    padding: 1rem 0;
    width: 20rem;
    border-radius: 20px;
    box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%);
+}
+
+.modal article:first-child::-webkit-scrollbar {
+   width: 4px;
+   height: 2px;
+}
+
+.modal article:first-child::-webkit-scrollbar-thumb {
+   background: rgb(145, 190, 181);
+   border-radius: 20px;
 }
 
 .tituloMenu {
@@ -313,26 +333,13 @@
    color: rgb(85 91 110 / 81%);
 }
 
-.mensaje {
-   width: 13rem;
+.tooltip-box {
+   line-height: 1.5rem;
+   letter-spacing: 0.9px;
+   font-weight: 800;
+   color: #c21313;
+   width: 18rem;
    margin: 0 auto;
-   padding: 0.5rem;
-   font-size: 1.2rem;
-   color: #ffffff;
-   letter-spacing: 0.7px;
-   border-radius: 20px;
-   line-height: 15px;
-   display: none;
-}
-
-.correcto {
-   display: block;
-   background-color: #86eb59;
-}
-
-.falso {
-   display: block;
-   background: #ef6060;
 }
 
 /* TARJETAS PAGINA PRINCIPAL */
@@ -572,4 +579,14 @@
       border: none;
       border-right: 2px solid #fffdfd;
    }
+}
+
+.red {
+   margin-top: 1rem;
+   color: #f44336;
+   font-size: 1.1rem;
+   position: inherit;
+}
+.red1 {
+   color: #f44336;
 }

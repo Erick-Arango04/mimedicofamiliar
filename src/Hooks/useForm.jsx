@@ -3,7 +3,7 @@ import { useState } from "react";
 export const useForm = (valuesForm = {}) => {
    const [values, setValues] = useState(valuesForm);
 
-   const reset = () => {
+   const resetValues = () => {
       setValues(valuesForm);
    };
 
@@ -16,6 +16,16 @@ export const useForm = (valuesForm = {}) => {
          password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/.test(
             nameValue
          ),
+         nombre: /^[a-zA-Z\s]{1,40}$/.test(nameValue),
+         apellidoPaterno: /^[a-zA-Z\s]{1,20}$/.test(nameValue),
+         apellidoMaterno: /^[a-zA-Z\s]{1,20}$/.test(nameValue),
+         especialidad: /^[a-zA-Z\s]{1,20}$/.test(nameValue),
+         cedula: /^[a-zA-Z\s]{1,20}$/.test(nameValue),
+         telefono: /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test(
+            nameValue
+         ),
+         pais: /^[a-zA-Z\s]{1,40}$/.test(nameValue),
+         estado: /^[a-zA-Z\s]{1,40}$/.test(nameValue),
       };
 
       setValues({
@@ -25,5 +35,5 @@ export const useForm = (valuesForm = {}) => {
       });
    };
 
-   return [values, manejadorInput, reset];
+   return [values, manejadorInput, resetValues];
 };

@@ -118,7 +118,6 @@ export const registrar = (correo, contraseña) => {
                   Estado: "",
                   Fecha: "",
                   Email: correo,
-                  Contrasena: contraseña,
                   TipoUsuario: "Paciente",
                })
                .then(() => {
@@ -143,5 +142,82 @@ export const registrar = (correo, contraseña) => {
          let errorMessage = error.message;
          alert(errorMessage);
          alert(errorCode);
+      });
+};
+
+export const registrarDoc = (
+   nombre,
+   apellidoPaterno,
+   apellidoMaterno,
+   especialidad,
+   cedula,
+   telefono,
+   pais,
+   estado,
+   email,
+   password
+) => {
+   let hoy = new Date();
+   let fechainscripcion =
+      hoy.getDate() + "-" + (hoy.getMonth() + 1) + "-" + hoy.getUTCFullYear();
+   let terminoinscripcion =
+      hoy.getDate() +
+      "-" +
+      (hoy.getMonth() + 1 + 3) +
+      "-" +
+      hoy.getUTCFullYear();
+
+   firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(function () {
+         alert("Usuario registrado");
+         //observador para poder ingresar los datos a firestore de firebase
+         firebase.auth().onAuthStateChanged((user) => {
+            let uid = user.uid;
+            db.collection("Usuarios")
+               .doc(uid)
+               .set({
+                  Nombre: nombre,
+                  ApellidoPaterno: apellidoPaterno,
+                  ApellidoMaterno: apellidoMaterno,
+                  Especialidad: especialidad,
+                  Cedla: cedula,
+                  Telefono: telefono,
+                  Pais: pais,
+                  Estado: estado,
+                  Email: email,
+                  TipoUsuario: "Doctor",
+                  Fechainscripcion: fechainscripcion,
+                  Terminoinscripcion: terminoinscripcion,
+               })
+               .then((docRef) => {
+                  alert("datos agregados a la base de datos");
+                  alert(
+                     "Usuario registrado tienes 3 meses gratis de inscripcion"
+                  );
+                  let user = firebase.auth().currentUser;
+                  user
+                     .sendEmailVerification()
+                     .then(function () {
+                        // Email sent.
+                        window.location.href = "/";
+                     })
+                     .catch(function (error) {
+                        // An error happened.
+                     });
+               })
+               .catch((error) => {
+                  console.error("Error adding document: ", error);
+                  alert(error);
+               });
+         });
+      })
+      .catch(function (error) {
+         let errorCode = error.code;
+         let errorMessage = error.message;
+         alert(errorMessage);
+         alert(errorCode);
+         // ..
       });
 };

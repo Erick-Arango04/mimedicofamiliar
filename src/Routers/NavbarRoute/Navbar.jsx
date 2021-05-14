@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ModalFormAcces from "../../Componentes/Modales/ModalFormAcces";
-import ModalFormRegistrer from "../../Componentes/Modales/ModalFormRegistrer";
+import ModalRegisterDoc from "../../Componentes/Modales/RegisterDocs/ModalRegisterDoc";
+import ModalFormRegistrer from "../../Componentes/Modales/RegisterUser.jsx/ModalFormRegistrer";
 import { useModal } from "../../Hooks/useModal";
 import TipoUser from "./TipoUser";
 
@@ -10,8 +11,14 @@ const Navbar = ({
    settouchMenuMovil = null,
    clastipoUserMobile = "tipoUser",
 }) => {
-   const [tipoUser, setTipoUser] = useState(false);
+   const [mostrarTipoUser, setMostrarTipoUser] = useState(false);
 
+   /**
+    *  * HOOK MODAL
+    *  ? isOpen[value] valor true o false (abierto o cerrdo)
+    *  ? openModal abre el modal
+    *  ? closeModal cerrar modal
+    */
    const [isOpenModalAcces, openModalAcces, closeModalAcces] = useModal(false);
 
    const [
@@ -20,15 +27,22 @@ const Navbar = ({
       closeModalRegister,
    ] = useModal(false);
 
+   const [
+      isOpenModalRegisterDoc,
+      openModalRegisterDoc,
+      closeModalRegisterDoc,
+   ] = useModal(false);
+
    const datostipoUser = {
       clastipoUserMobile,
       openModalRegister,
+      openModalRegisterDoc,
       settouchMenuMovil,
-      setTipoUser,
+      setMostrarTipoUser,
    };
 
-   const handleSubmit = () => {
-      setTipoUser(false);
+   const handleSubmitAcceder = () => {
+      setMostrarTipoUser(false);
       openModalAcces();
       if (settouchMenuMovil !== null) {
          settouchMenuMovil((e) => !e);
@@ -39,11 +53,13 @@ const Navbar = ({
       <>
          <nav className={clas}>
             <section>
-               <span onClick={() => setTipoUser(!tipoUser)}>Registrarse</span>
-               {tipoUser && <TipoUser {...datostipoUser} />}
+               <span onClick={() => setMostrarTipoUser(!mostrarTipoUser)}>
+                  Registrarse
+               </span>
+               {mostrarTipoUser && <TipoUser {...datostipoUser} />}
             </section>
 
-            <span onClick={() => handleSubmit()}>Acceder</span>
+            <span onClick={() => handleSubmitAcceder()}>Acceder</span>
 
             <Link exact="true" to="/">
                Inicio
@@ -65,6 +81,11 @@ const Navbar = ({
          <ModalFormAcces
             isOpen={isOpenModalAcces}
             closeModal={closeModalAcces}
+         />
+
+         <ModalRegisterDoc
+            isOpen={isOpenModalRegisterDoc}
+            closeModal={closeModalRegisterDoc}
          />
       </>
    );

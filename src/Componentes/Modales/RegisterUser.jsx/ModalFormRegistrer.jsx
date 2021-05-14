@@ -1,9 +1,9 @@
+import { registrar } from "../../../config-firebase/funciones_firebase";
 import { useState } from "react";
-import { registrar } from "../../config-firebase/funciones_firebase";
-import { useForm } from "../../Hooks/useForm";
-import Input from "../Form/Input";
-import InputConfirmPasswoedput from "../Form/InputConfirmPasswoed";
-const img = require.context("../../Img", true);
+import { useForm } from "../../../Hooks/useForm";
+import Input from "../../Form/Input";
+import ConfirmPassword from "../ConfirmPassword";
+const img = require.context("../../../Img", true);
 
 const initialValueForm = {
    email: "",
@@ -13,28 +13,45 @@ const initialValueForm = {
 };
 
 const ModalFormRegistrer = ({ isOpen, closeModal }) => {
-   const [confirmPassword, setconfirmPassword] = useState("");
-   const [values, manejadorInput, reset] = useForm(initialValueForm);
+   const [values, manejadorInput, resetValues] = useForm(initialValueForm);
+   const [mensajeError, setmensajeError] = useState(false);
+   const [confirmPassword, setConfirmPassword] = useState({
+      confirmPassword: "",
+      validate_confirmPassword: false,
+   });
    const { email, password, validate_email, validate_password } = values;
 
-   const registrarUsuario = (e) => {
+   const accionBoton = (e) => {
       e.preventDefault();
-
       if (
          validate_email &&
          validate_password &&
-         values.password === confirmPassword
+         confirmPassword.validate_confirmPassword
       ) {
+         setmensajeError(false);
          registrar(email, password);
-         reset();
+         resetValues();
          closeModal();
+      } else {
+         setmensajeError(true);
       }
+   };
+
+   const resetAndClose = () => {
+      resetValues();
+      // reseteamos el valor de confirmar contraseña
+      setConfirmPassword({
+         confirmPassword: "",
+         validate_confirmPassword: false,
+      });
+      setmensajeError(false);
+      closeModal();
    };
 
    return (
       <section
          className={`modal ${isOpen && "mostrar"}`}
-         onClick={() => closeModal()}
+         onClick={resetAndClose}
       >
          {/* evitar que se cierre el modal al tocar el hijo  */}
          <article onClick={(e) => e.stopPropagation()}>
@@ -57,39 +74,54 @@ const ModalFormRegistrer = ({ isOpen, closeModal }) => {
                value={values}
                placeholder="Email"
                name="email"
+               mensaje={["ejemplo User234@gmail.com"]}
                manejadorInput={manejadorInput}
-               icono={<i className="ri-user-fill"></i>}
+               icono={<i className="ri-mail-fill"></i>}
             />
+
             <br />
             <Input
                value={values}
                placeholder="Password"
                name="password"
-               // tipo="password"
+               tipo="password"
+               mensaje={[
+                  "Minimo 8 caracteres",
+                  "Maximo 15",
+                  "Al menos una letra mayúscula",
+                  "Al menos una letra minucula",
+                  "Al menos un dígito",
+                  "No espacios en blanco",
+                  "Al menos 1 caracter especial($@$!%*?&)",
+               ]}
                manejadorInput={manejadorInput}
                icono={<i className="ri-lock-password-fill"></i>}
             />
-            <br />
-            <InputConfirmPasswoedput
+
+            <ConfirmPassword
                confirmPassword={confirmPassword}
-               setconfirmPassword={setconfirmPassword}
-               placeholder="Confirm Pasword"
-               contraseña={values.password}
-               name="confirmPasword"
-               icono={<i className="ri-lock-password-fill"></i>}
+               setConfirmPassword={setConfirmPassword}
+               password={password}
             />
 
             <br />
-            <br />
+
+            {mensajeError && (
+               <h3 className="red1">
+                  No podemos enviar tu informacion, revisa los datos que
+                  ingresaste
+               </h3>
+            )}
+
             <p className="singIng">Sing in</p>
             <button
                className="btn-principal seconbtn"
-               onClick={(e) => registrarUsuario(e)}
+               onClick={(e) => accionBoton(e)}
             >
                Go <i className="ri-arrow-right-line"></i>
             </button>
             <br />
-            <button className="btnMovilClose red" onClick={closeModal}>
+            <button className="btnMovilClose red" onClick={resetAndClose}>
                <i className="ri-close-line"></i>
             </button>
          </article>

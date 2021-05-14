@@ -4,13 +4,14 @@ const TipoUser = (props) => {
    const {
       clastipoUserMobile,
       openModalRegister,
-      setTipoUser,
+      openModalRegisterDoc,
+      setMostrarTipoUser,
       settouchMenuMovil,
    } = props;
 
-   const handleClick = () => {
-      setTipoUser((e) => !e);
-      openModalRegister();
+   const handleClick = (callback) => {
+      setMostrarTipoUser((e) => !e);
+      callback();
 
       if (settouchMenuMovil !== null) {
          settouchMenuMovil((e) => !e);
@@ -20,14 +21,10 @@ const TipoUser = (props) => {
    return (
       <>
          <article className={clastipoUserMobile}>
-            <span
-               onClick={() => {
-                  handleClick();
-               }}
-            >
-               Paciente
+            <span onClick={() => handleClick(openModalRegister)}>Paciente</span>
+            <span onClick={() => handleClick(openModalRegisterDoc)}>
+               Médico
             </span>
-            <span>Mèdico</span>
          </article>
       </>
    );

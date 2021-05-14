@@ -1,44 +1,59 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-const Input = ({
-   placeholder,
-   name,
-   value,
-   tipo = "text",
-   icono,
-   manejadorInput,
-}) => {
-   let claseMensaje = "mensaje";
+const Input = (props) => {
+   const refInput = useRef();
+   const { current: inputValidacion } = refInput;
 
-   if (value[`validate_${name}`]) {
-      claseMensaje += " correcto";
-   } else {
-      if (value[name].length > 2) {
-         claseMensaje += " falso";
+   const {
+      value,
+      placeholder,
+      name,
+      manejadorInput,
+      icono,
+      tipo = "text",
+      mensaje = "",
+   } = props;
+
+   useEffect(() => {
+      // resetea el borde del input cuando esta en vacio
+      if (value[name] === "" && inputValidacion) {
+         inputValidacion.style = " border:none";
       }
-   }
+   });
+
+   const validacion = () => {
+      if (value[`validate_${name}`]) {
+         inputValidacion.style = "  border: 2px solid #86eb59;";
+      } else {
+         if (value[name].length > 0) {
+            inputValidacion.style = "  border: 2px solid #fb0101;";
+         }
+      }
+   };
 
    return (
       <>
-         <div className={claseMensaje}>
-            {value[`validate_${name}`] ? (
-               <h6> formato correcto</h6>
-            ) : (
-               <h6>formato no valido</h6>
-            )}
-         </div>
          <section className="contenedorInput">
             <input
-               value={value.name}
+               ref={refInput}
+               value={value[name]}
                className="inputFotm"
                type={tipo}
                autoComplete="off"
                name={name}
                onChange={manejadorInput}
                placeholder={placeholder}
+               onKeyUp={validacion}
             />
             {icono}
          </section>
+         {!value[`validate_${name}`] && value[name].length > 0 && (
+            <div className="tooltip-box">
+               {mensaje.map((mensaje, i) => (
+                  <p key={i}>{mensaje}</p>
+               ))}
+            </div>
+         )}
       </>
    );
 };
