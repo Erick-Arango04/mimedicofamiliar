@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Auth/AuthContext";
 import ModalFormAcces from "../../Componentes/Modales/ModalFormAcces";
 import ModalRegisterDoc from "../../Componentes/Modales/RegisterDocs/ModalRegisterDoc";
 import ModalFormRegistrer from "../../Componentes/Modales/RegisterUser.jsx/ModalFormRegistrer";
 import { useModal } from "../../Hooks/useModal";
+import NavbarLogin from "./NavbarLogin";
 import TipoUser from "./TipoUser";
 
 const Navbar = ({
@@ -12,7 +14,7 @@ const Navbar = ({
    clastipoUserMobile = "tipoUser",
 }) => {
    const [mostrarTipoUser, setMostrarTipoUser] = useState(false);
-
+   const { user } = useContext(AuthContext);
    /**
     *  * HOOK MODAL
     *  ? isOpen[value] valor true o false (abierto o cerrdo)
@@ -49,9 +51,23 @@ const Navbar = ({
       }
    };
 
+   if (user.logged) {
+      return <NavbarLogin clas={clas} />;
+   }
+
    return (
       <>
          <nav className={clas}>
+            <Link exact="true" to="/">
+               ¿Quienes Somos?
+            </Link>
+            <Link exact="true" to="/">
+               Preguntas Frecuentes
+            </Link>
+            <Link exact="true" to="/">
+               Contactanos
+            </Link>
+
             <section>
                <span onClick={() => setMostrarTipoUser(!mostrarTipoUser)}>
                   Registrarse
@@ -60,17 +76,6 @@ const Navbar = ({
             </section>
 
             <span onClick={() => handleSubmitAcceder()}>Acceder</span>
-
-            <Link exact="true" to="/">
-               Inicio
-            </Link>
-            <Link exact="true" to="/paciente">
-               Mi perfil
-            </Link>
-            <Link to="/">Favoritos</Link>
-            <Link exact="true" to="/agenda">
-               Agenda
-            </Link>
          </nav>
 
          <ModalFormRegistrer

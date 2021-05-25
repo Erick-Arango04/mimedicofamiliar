@@ -3,7 +3,8 @@
    --apricot: rgba(255, 214, 186, 1);
 }
 
-/* barras de scrool */
+/** 
+* ! barras de scrool */
 body::-webkit-scrollbar {
    width: 7px;
 }
@@ -33,7 +34,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /** 
-  * ? ESTILOS PARA LOS MENUS DE NAVEGACION MOVIL Y DESKTOP
+  * ! ESTILOS PARA LOS MENUS DE NAVEGACION MOVIL Y DESKTOP
   * ! DESKTOP
 */
 .menu {
@@ -136,7 +137,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .menuMostrarMovil a {
-   font-size: 1.7rem;
+   font-size: 1.5rem;
    color: #fdfdfd;
 }
 
@@ -159,7 +160,7 @@ body::-webkit-scrollbar-thumb {
    margin: 0 auto;
 }
 /**
- * *ESTILOS PARA LOS BOTONES */
+ * ! ESTILOS PARA LOS BOTONES */
 
 .btn-principal {
    margin: 1rem;
@@ -183,7 +184,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /**
- * ?ESTILOS PARA LOS ENCABEZADOS
+ * !ESTILOS PARA LOS ENCABEZADOS
  */
 
 .titulo {
@@ -195,7 +196,7 @@ body::-webkit-scrollbar-thumb {
 
 /**
 
-* *Estilos para el modal 
+* ! ESTILOS PARA EL MODAL
 
 */
 .imgModal {
@@ -303,12 +304,34 @@ body::-webkit-scrollbar-thumb {
    transform: translateY(0);
 }
 
-/* Formularios */
+.userCorreoLoged > p {
+   color: #b5aaaa;
+   padding-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+   .userCorreoLoged {
+      flex-grow: 0.1;
+      display: flex;
+      justify-content: space-evenly;
+   }
+
+   .userCorreoLoged > p {
+      font-weight: bold;
+      color: var(--colormorado);
+      padding-top: 0;
+   }
+}
+
+/**
+* ! FORMULARIOS 
+ */
 .contenedorInput {
    position: relative;
    display: inline-block;
    height: 38px;
    margin: 1rem;
+   margin-bottom: 2rem;
 }
 
 .inputFotm {
@@ -338,11 +361,12 @@ body::-webkit-scrollbar-thumb {
    letter-spacing: 0.9px;
    font-weight: 800;
    color: #c21313;
-   width: 18rem;
-   margin: 0 auto;
+   position: absolute;
 }
 
-/* TARJETAS PAGINA PRINCIPAL */
+/**
+*! TARJETAS PAGINA PRINCIPAL
+ */
 .card {
    width: 13rem;
    border-radius: 20px;
@@ -378,7 +402,8 @@ body::-webkit-scrollbar-thumb {
    color: rgba(240, 236, 236, 1);
 }
 
-/* tarjetas testimonial */
+/**
+* ! TARJETAS TESTIMONIAL*/
 .contentTest {
    padding: 1rem 0;
    max-width: 20rem;
@@ -424,7 +449,9 @@ body::-webkit-scrollbar-thumb {
    color: orange;
 }
 
-/* contenedorTestimonial */
+/** 
+* ! CONTENEDOR TESTIMONIAL 
+*/
 .contenedorCardTest {
    box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px 0px;
    background: rgb(250, 249, 249);
@@ -435,38 +462,8 @@ body::-webkit-scrollbar-thumb {
    padding: 2.5rem;
 }
 
-/* Footer */
-.footer {
-   margin-top: 4rem;
-}
-
-.footer ul {
-   margin: 0;
-}
-
-.footer ul li {
-   margin: 0;
-   padding: 0.2rem 0;
-   font-size: 1rem;
-   list-style: none;
-   color: rgba(85, 91, 110, 1);
-}
-
-.redesSociales {
-   width: 9rem;
-   padding: 0.5rem 0;
-   display: flex;
-   justify-content: space-around;
-   margin: auto;
-}
-
-.li:hover {
-   transition: 0.2s ease;
-   font-weight: bold;
-   color: #020202;
-}
-
-/* PAGINA USUARIO */
+/** 
+* ! PAGINA USUARIO */
 .marcoFoto {
    margin: 1rem auto;
    width: 7rem;
@@ -529,7 +526,8 @@ body::-webkit-scrollbar-thumb {
    color: var(--colormorado);
 }
 
-/* PAGINA AGENDA */
+/** 
+* ! PAGINA AGENDA */
 .agendaH1 {
    font-size: 2rem;
    margin: 1rem 0;
@@ -581,6 +579,9 @@ body::-webkit-scrollbar-thumb {
    }
 }
 
+/** 
+* ! BOTON CERRAR MODAL
+*/
 .red {
    margin-top: 1rem;
    color: #f44336;
@@ -589,4 +590,113 @@ body::-webkit-scrollbar-thumb {
 }
 .red1 {
    color: #f44336;
+}
+
+/**
+* ! MENSAJE QUE INDICA QUE EL USUARIO ESTA LOGUEADO */
+.contentMensaje {
+   font-size: 1.2rem;
+   padding-top: 2rem;
+}
+
+.contentMensaje > h3 {
+   color: rgb(134, 235, 89);
+   margin-bottom: 1rem;
+   letter-spacing: 1px;
+}
+
+.contentMensaje p {
+   color: rgb(85, 91, 110);
+}
+
+/** 
+ * ! LOADER */
+.lds-ellipsis {
+   margin: 0 auto;
+   display: block;
+   position: relative;
+   bottom: 11px;
+   width: 88px;
+   height: 50px;
+}
+.lds-ellipsis div {
+   position: absolute;
+   top: 33px;
+   width: 15px;
+   height: 15px;
+   border-radius: 50%;
+   background: var(--colormorado);
+   animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+   left: 8px;
+   animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+   left: 8px;
+   animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+   left: 32px;
+   animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+   left: 56px;
+   animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+   0% {
+      transform: scale(0);
+   }
+   100% {
+      transform: scale(1);
+   }
+}
+@keyframes lds-ellipsis3 {
+   0% {
+      transform: scale(1);
+   }
+   100% {
+      transform: scale(0);
+   }
+}
+@keyframes lds-ellipsis2 {
+   0% {
+      transform: translate(0, 0);
+   }
+   100% {
+      transform: translate(24px, 0);
+   }
+}
+
+/** 
+* ! FOOTER */
+.footer {
+   margin-top: 4rem;
+}
+
+.footer ul {
+   margin: 0;
+}
+
+.footer ul li {
+   margin: 0;
+   padding: 0.2rem 0;
+   font-size: 1rem;
+   list-style: none;
+   color: rgba(85, 91, 110, 1);
+}
+
+.redesSociales {
+   width: 9rem;
+   padding: 0.5rem 0;
+   display: flex;
+   justify-content: space-around;
+   margin: auto;
+}
+
+.li:hover {
+   transition: 0.2s ease;
+   font-weight: bold;
+   color: #020202;
 }

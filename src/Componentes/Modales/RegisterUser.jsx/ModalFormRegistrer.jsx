@@ -1,8 +1,8 @@
 import { registrar } from "../../../config-firebase/funciones_firebase";
 import { useState } from "react";
 import { useForm } from "../../../Hooks/useForm";
-import Input from "../../Form/Input";
 import ConfirmPassword from "../ConfirmPassword";
+import Input from "../../Form/Input";
 const img = require.context("../../../Img", true);
 
 const initialValueForm = {

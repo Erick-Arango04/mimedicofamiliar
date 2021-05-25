@@ -2,50 +2,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import db from "./config_firebase";
 
-export const login = (emailValue, passwordValue) => {
-   firebase
-      .auth()
-      .signInWithEmailAndPassword(emailValue, passwordValue)
-      .then((userCredential) => {
-         //escuchador para revisar si el correo ya esta verificado
-         firebase.auth().onAuthStateChanged((user) => {
-            let uid = user.uid;
-            let emailVerified = user.emailVerified;
-            if (emailVerified == true) {
-               let docRef = db.collection("Usuarios").doc(uid);
-               docRef
-                  .get()
-                  .then((doc) => {
-                     if (doc.exists) {
-                        console.log("Document data:", doc.data().TipoUsuario);
-                        const tipo = doc.data().TipoUsuario;
-                        if (tipo == "Paciente") {
-                           alert("Inicio un paciente");
-                           window.location.href = "/perfil_paciente";
-                        } else if (tipo == "Doctor") {
-                           alert("Inicio un doctor");
-                           window.location.href = "/perfil_doctor";
-                        }
-                     } else {
-                        // doc.data() will be undefined in this case
-                        console.log("No such document!");
-                     }
-                  })
-                  .catch((error) => {
-                     console.log("Error getting document:", error);
-                  });
-            } else {
-               alert("El email del usuario no esta verificado");
-            }
-         });
-      })
-      .catch((error) => {
-         alert("Usuario o contraseña incorrecta");
-         let errorCode = error.code;
-         let errorMessage = error.message;
-      });
-};
-
 export const recuperarContraseña = (email) => {
    firebase
       .auth()
@@ -60,7 +16,7 @@ export const recuperarContraseña = (email) => {
       });
 };
 
-export const regis_google = () => {
+/* export const regis_google = () => {
    let provider = new firebase.auth.GoogleAuthProvider();
    firebase
       .auth()
@@ -77,7 +33,7 @@ export const regis_google = () => {
                   Nombre: nombre,
                   TipoUsuario: "Paciente",
                })
-               .then((docRef) => {
+               .then(() => {
                   //console.log("Document written with ID: ", docRef.id);
                   window.location.href = "/perfil_paciente";
                })
@@ -98,7 +54,7 @@ export const regis_google = () => {
          let credential = error.credential;
          // ...
       });
-};
+}; */
 
 export const registrar = (correo, contraseña) => {
    firebase
@@ -129,7 +85,7 @@ export const registrar = (correo, contraseña) => {
                      .then(function () {
                         window.location.href = "/";
                      })
-                     .catch(function (error) {});
+                     .catch(function () {});
                })
                .catch((error) => {
                   console.error("Error adding document: ", error);
@@ -191,7 +147,7 @@ export const registrarDoc = (
                   Fechainscripcion: fechainscripcion,
                   Terminoinscripcion: terminoinscripcion,
                })
-               .then((docRef) => {
+               .then(() => {
                   alert("datos agregados a la base de datos");
                   alert(
                      "Usuario registrado tienes 3 meses gratis de inscripcion"
@@ -203,7 +159,7 @@ export const registrarDoc = (
                         // Email sent.
                         window.location.href = "/";
                      })
-                     .catch(function (error) {
+                     .catch(function () {
                         // An error happened.
                      });
                })

@@ -46,14 +46,15 @@ const Input = (props) => {
                onKeyUp={validacion}
             />
             {icono}
+            <br />
+            {!value[`validate_${name}`] && value[name].length > 0 && (
+               <div className="tooltip-box">
+                  {mensaje.map((mensaje, i) => (
+                     <p key={i}>{mensaje}</p>
+                  ))}
+               </div>
+            )}
          </section>
-         {!value[`validate_${name}`] && value[name].length > 0 && (
-            <div className="tooltip-box">
-               {mensaje.map((mensaje, i) => (
-                  <p key={i}>{mensaje}</p>
-               ))}
-            </div>
-         )}
       </>
    );
 };

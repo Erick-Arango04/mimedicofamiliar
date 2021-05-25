@@ -1,23 +1,15 @@
 import React from "react";
-import {
-   BrowserRouter as Router,
-   Switch,
-   Route,
-   Redirect,
-} from "react-router-dom";
-import Agenda from "../Componentes/Agenda/Agenda";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PagePrincipal from "../Componentes/PagePrincipal/PagePrincipal";
-import PerfilUsuario from "../Componentes/PerfilUsuario/PerfilUsuario";
+import RoutesUser from "./RoutesUser";
+import RoutesPrivate from "./RoutesPrivate";
 
 const DashbordRoues = () => {
    return (
       <Router>
          <Switch>
-            <Route exact path="/paciente" component={PerfilUsuario} />
-            <Route exact path="/agenda" component={Agenda} />
-            <Route exact path="/" component={PagePrincipal} />
-
-            <Redirect to="/" />
+            <Route exact path="/busqueda" component={PagePrincipal} />
+            <RoutesPrivate path="/" component={RoutesUser} />
          </Switch>
       </Router>
    );
